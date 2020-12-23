@@ -321,10 +321,11 @@ uint32_t PubSubClient::readPacket(uint8_t* lengthLength) {
 
     do {
         if (len == 5) {
+            Serial.println("Would have killed normally");
             // Invalid remaining length encoding - kill the connection
-            _state = MQTT_DISCONNECTED;
-            _client->stop();
-            return 0;
+            // _state = MQTT_DISCONNECTED;
+            // _client->stop();
+            // return 0;
         }
         if(!readByte(&digit)) return 0;
         this->buffer[len++] = digit;
